@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>MedGuide</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-button expand="block" color="tertiary" routerLink="/reminders">
+    View All Reminders
+</ion-button>
+
+
+<!-- <ion-content class="ion-padding">
+    <h2>Add Medication</h2>
+
+    <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="newMed.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Dosage</ion-label>
+        <ion-input [(ngModel)]="newMed.dosage"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Time</ion-label>
+        <ion-input type="time" [(ngModel)]="newMed.time"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="addMedication()">Add Medication</ion-button>
+
+    <hr />
+
+    <h2>Medication List</h2>
+    <ion-list>
+        <ion-item *ngFor="let med of medications$ | async">
+            <ion-label>
+                <h2>{{ med.name }}</h2>
+                <p>{{ med.dosage }} — {{ med.time }}</p>
+            </ion-label>
+            <ion-button fill="clear" color="primary" (click)="openEditModal(med)">Edit</ion-button>
+            <ion-button fill="clear" color="danger" (click)="deleteMedication(med.id!)">Delete</ion-button>
+        </ion-item>
+    </ion-list>
+</ion-content> -->
+
+<ion-content class="ion-padding">
+
+    <!-- Offline Banner -->
+    <ion-item *ngIf="offline" color="warning">
+        <ion-label>⚠️ You are offline — showing cached data.</ion-label>
+    </ion-item>
+
+    <!-- Add Medication -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Add New Medication</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">Name</ion-label>
+                <ion-input [(ngModel)]="newMed.name"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Dosage</ion-label>
+                <ion-input [(ngModel)]="newMed.dosage"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Time</ion-label>
+                <ion-input type="time" [(ngModel)]="newMed.time"></ion-input>
+            </ion-item>
+
+            <ion-button expand="block" color="success" (click)="addMedication()">Add Medication</ion-button>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Medication List -->
+    <h2>Medication Schedule</h2>
+    <ion-list *ngIf="medications$ | async as meds; else noData">
+        <ion-item *ngFor="let med of meds">
+            <ion-label>
+                <h2>{{ med.name }}</h2>
+                <p>{{ med.dosage }} — {{ med.time }}</p>
+            </ion-label>
+            <ion-buttons slot="end">
+                <ion-button fill="clear" color="primary" (click)="openEditModal(med)">
+                    <ion-icon name="create"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" color="danger" (click)="deleteMedication(med.id!, med.name)">
+                    <ion-icon name="trash"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ion-list>
+
+    <ng-template #noData>
+        <p class="ion-text-center">No medications added yet.</p>
+    </ng-template>
+</ion-content>

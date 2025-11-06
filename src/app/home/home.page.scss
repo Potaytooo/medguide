@@ -1,0 +1,257 @@
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 16px;
+}
+
+ion-item h2 {
+  font-weight: 600;
+  --background: transparent !important;
+}
+
+ion-list, ion-item {
+  --background: transparent !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+ion-content {
+  --background: none !important; /* remove Ionic default */
+  background: url('/assets/blk1.wbep') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+ion-toolbar {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #2b2b2b;
+}
+
+/* ===== Toast Styles ===== */
+.medguide-toast {
+  border-radius: 16px;
+  font-size: 15px;
+  padding: 12px 16px;
+  margin-bottom: 80px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.3px;
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.success-toast {
+  background-color: #e3f9e5;
+  /* soft green */
+  color: #006d3b;
+  border: 1px solid #b2e2b9;
+}
+
+.delete-toast {
+  background-color: #5e231e;
+  /* soft red */
+  color: #dbcdcd;
+  border: 1px solid #f6b6b6;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reminder-toast {
+  background-color: #eaf4ff;
+  color: #004085;
+  border: 1px solid #b8daff;
+}
+
+.add-card, .schedule-card {
+  margin: 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  color: #ffffffcc;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+
+}
+
+.add-card:hover,
+.schedule-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+ion-card-header {
+  background: var(--ion-color-primary);
+  color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 1rem;
+}
+
+ion-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+ion-item {
+  --background: white;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+ion-input {
+  --padding-start: 12px;
+}
+
+ion-button {
+  font-weight: 500;
+}
+
+ion-button[color="success"] {
+  --border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+ion-button[color="tertiary"] {
+  background: linear-gradient(90deg, #7b2ff7, #f107a3);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  margin: 1.5rem 1rem 1rem 1rem;
+  height: 48px;
+  font-size: 1.05em;
+
+}
+
+ion-button[color="primary"],
+ion-button[color="danger"] {
+  --color: white; /* Makes icons visible */
+  background: rgba(255, 255, 255, 0.15); /* translucent bubble */
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+ion-button[color="primary"]:hover,
+ion-button[color="danger"]:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+ion-icon {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+.empty-state {
+  text-align: center;
+  color: #888;
+  padding: 1.5rem 0;
+}
+
+.empty-state ion-icon {
+  font-size: 2.5rem;
+  color: #ccc;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.medguide-toast {
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+/* home/home.page.scss */
+
+ion-title {
+    /* Keep existing centering properties */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0; 
+    
+    /* --- NEW FONT STYLES --- */
+    font-family: 'Poppins', sans-serif; /* Replace 'Poppins' with your chosen font */
+    font-weight: 700;                   
+    font-size: 1.5rem;                  
+    letter-spacing: 0.5px;
+}
+
+/* Adjust the icon spacing if needed */
+ion-title ion-icon {
+    margin-right: 12px;
+}
+
+.schedule-card {
+  margin-top: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  margin-top: 20px;
+}
+
+ion-content {
+  scroll-behavior: smooth;
+}
+
+.background-image {
+  --background: none; /* remove Ionic's default background color */
+  background: url('/assets/med back.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+}

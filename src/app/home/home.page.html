@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-icon name="medical-outline" style="margin-right: 8px"></ion-icon>
+      MedGuide 💊
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+class="ion-padding background-image" 
+class="ion-padding">
+
+  <ion-button 
+    expand="block" 
+    color="tertiary" 
+    (click)="scrollToSchedule()">
+    View All Reminders
+  </ion-button>
+
+  <!-- Offline Banner -->
+  <ion-item *ngIf="offline" color="warning">
+    <ion-label>⚠️ You are offline — showing cached data.</ion-label>
+  </ion-item>
+
+  <!-- Add Medication -->
+  <ion-card class="add-card">
+    <ion-card-header>
+      <ion-card-title>Add New Medication</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="newMed.name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Dosage</ion-label>
+        <ion-input [(ngModel)]="newMed.dosage"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Time</ion-label>
+        <ion-input type="time" [(ngModel)]="newMed.time"></ion-input>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        color="success"
+        class="ion-margin-top"
+        (click)="addMedication()">
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        Add Medication
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Medication Schedule Section -->
+  <ion-card class="schedule-card" #schedule>
+    <ion-card-header>
+      <ion-card-title>Medication Schedule</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list *ngIf="hasLoadedOnce && medications.length > 0; else noMeds">
+        <ion-item *ngFor="let med of medications">
+          <ion-label>
+            <h2>{{ med.name }}</h2>
+            <p>{{ med.dosage }} — {{ med.time }}</p>
+          </ion-label>
+
+          <ion-buttons slot="end">
+            <ion-button color="primary" fill="clear" (click)="openEditModal(med)">
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" fill="clear" (click)="deleteMedication(med.id!, med.name)">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+
+      <!-- Empty State -->
+      <ng-template #noMeds>
+        <div class="empty-state">
+          <ion-icon name="medkit-outline"></ion-icon>
+          <p>No medications found.</p>
+        </div>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
